@@ -51,7 +51,7 @@ class ControlController extends Controller
                 $unites = Unite::where('equipe_id', $monEqId)->with('equipe')->paginate(5);
                 return view('controls.edit', compact('control', 'unites'));
             } else {
-                return redirect()->back()->with('message', 'Vous n\'tetes pas Autorisé ');
+                return redirect()->back()->with('message', 'Le militaire ne fait pas partir des vos unités de control');
             }
         }
 

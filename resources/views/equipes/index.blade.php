@@ -90,7 +90,9 @@
                                     @empty
                                         <tr>
                                             <td class="cell" colspan="6">
-                                                <div style="text-align:center; padding: 3rem">vous êtes sans Equipe</div>
+                                                <div style="text-align:center; padding: 3rem">
+                                                    <h4><b>vous êtes sans Equipe</b></h4>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforelse

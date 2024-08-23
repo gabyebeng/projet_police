@@ -88,7 +88,12 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td class="cell" colspan="6">Aucune Mission Ajoutée</td>
+                                            <td class="cell" colspan="6">
+                                                <div style="text-align:center; padding: 3rem">
+                                                    <h4><b>Aucune Mission Ajoutée</b></h4>
+                                                </div>
+
+                                            </td>
                                         </tr>
                                     @endforelse
                                 </tbody>

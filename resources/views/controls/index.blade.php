@@ -99,8 +99,10 @@
 
                             @empty
                                 <tr>
-                                    <td class="cell" colspan="6">
-                                        <div style="text-align:center; padding:3rem">Aucun contrôl Effectué</div>
+                                    <td class="cell" colspan="9">
+                                        <div style="text-align:center; padding:3rem">
+                                            <h4><b>Aucun contrôl Effectué</b></h4>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforelse

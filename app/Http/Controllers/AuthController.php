@@ -7,9 +7,17 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AuthRequest;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
+use Session;
 
 class AuthController extends Controller
 {
+    public function deconnecter()
+    {
+        Session::flush();
+        Auth::logout();
+        //     return view('Auth.login');
+        return redirect()->route("login")->with("message", "Vous vous êtes deconnecté");
+    }
     public function index()
     {
         if (Auth::user()->role == "Admin") {

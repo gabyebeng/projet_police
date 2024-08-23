@@ -89,9 +89,9 @@
                                             class="avatar-img rounded" />
                                     </div>
                                     <div class="u-text">
-                                        <h4>Hizrian</h4>
-                                        <p class="text-muted">hello@example.com</p>
-                                        <a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                                        <h4>{{ Auth::user()->name }}</h4>
+                                        <p class="text-muted">{{ Auth::user()->email }}</p>
+                                        <a href="profile.html" class="btn btn-xs btn-secondary btn-sm">Mon Profil</a>
                                     </div>
                                 </div>
                             </li>
@@ -103,7 +103,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Account Setting</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Logout</a>
+                                <a class="dropdown-item" href="{{ route('user.deconnecter') }}">Deconnecter</a>
                             </li>
                         </div>
                     </ul>
