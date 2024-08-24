@@ -91,17 +91,24 @@
                                     <div class="u-text">
                                         <h4>{{ Auth::user()->name }}</h4>
                                         <p class="text-muted">{{ Auth::user()->email }}</p>
-                                        <a href="profile.html" class="btn btn-xs btn-secondary btn-sm">Mon Profil</a>
+                                        @if ($totalControl == 0)
+                                            <a href="{{ route('control.charger') }}"
+                                                class="btn btn-xs btn-secondary btn-sm">Charger les
+                                                controls</a>
+                                        @else
+                                            <p class="text-muted">Liste Control chargée</p>
+                                        @endif
+
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">My Profile</a>
+                                <a class="dropdown-item" href="#">Total Controlé Aujourd'hui :
+                                    {{ $controlToday }}</a>
                                 <a class="dropdown-item" href="#">My Balance</a>
-                                <a class="dropdown-item" href="#">Inbox</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Account Setting</a>
+                                <a class="dropdown-item" href="#">Synchronisation</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('user.deconnecter') }}">Deconnecter</a>
                             </li>

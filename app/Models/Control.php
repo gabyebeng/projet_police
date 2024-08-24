@@ -8,14 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Control extends Model
 {
     use HasFactory;
-    
-    public function policier(){
+    protected $guarded = [""];
+
+    public function policier()
+    {
         return $this->belongsTo(Policier::class, 'policier_id');
     }
-    public function unite(){
+    public function unite()
+    {
         return $this->belongsTo(Unite::class, 'unite_id');
     }
-    public function equipe(){
+    public function equipe()
+    {
         return $this->belongsTo(Equipe::class, 'equipe_id');
     }
 }

@@ -11,7 +11,20 @@ use Illuminate\Support\Facades\Auth;
 
 class ControlController extends Controller
 {
+    public function chargement(Control $controls)
+    {
+        $policiers = Policier::all();
 
+        if (Control::all()->count() == 0) {
+            foreach ($policiers as $policier) {
+                $controls->create([
+                    'policier_id' => $policier->id,
+                    'unite_id' => $policier->unite_id,
+                ]);
+            }
+        }
+        return redirect()->back();
+    }
     public function update(Control $control, Request $request)
     {
         if (Auth::user()->role == "Admin") {
@@ -29,10 +42,6 @@ class ControlController extends Controller
     }
     public function edit(Control $control)
     {
-
-
-
-
         if (Auth::user()->role == 'Admin') {
 
             $unites = Unite::all();

@@ -16,6 +16,7 @@
                         <button type="submit" class="btn btn-success">
                             <i class="fa fa-search search-icon"> Recherche</i>
                         </button>
+
                     </div>
                 </nav>
             </form>
@@ -29,6 +30,20 @@
                         @if (session()->has('message'))
                             <div class="text text-success">{{ session()->get('message') }}</div>
                         @endif
+                    </div>
+                    <div class="card-tools">
+                        <a href="#" class="btn btn-label-success btn-round btn-sm me-2">
+                            <span class="btn-label">
+                                <i class="fa fa-pencil"></i>
+                            </span>
+                            Exporter
+                        </a>
+                        <a href="#" class="btn btn-label-info btn-round btn-sm">
+                            <span class="btn-label">
+                                <i class="fa fa-print"></i>
+                            </span>
+                            Imprimer
+                        </a>
                     </div>
                 </div>
             </div>

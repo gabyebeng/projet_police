@@ -40,12 +40,8 @@ route::middleware('auth')->group(function () {
     route::prefix('policiers')->group(function () {
         route::post('/', [AppController::class, 'recherche_policier'])->name('policier.search');
         route::get('/', [AppController::class, 'listPolicier'])->name('policier.index');
-
-
-
-        //Routes d'actions
-        route::post('/create', [EmployerController::class, 'store'])->name('employer.store');
     });
+
     route::prefix('controls')->group(function () {
         route::post('/', [ControlController::class, 'recherche'])->name('control.search');
         route::get('/', [ControlController::class, 'index'])->name('control.index');
@@ -53,6 +49,7 @@ route::middleware('auth')->group(function () {
         route::get('/update/{control}', [ControlController::class, 'edit'])->name('control.edit');
         route::put('/update/{control}', [ControlController::class, 'update'])->name('control.update');
         route::get('/del/{control}', [ControlController::class, 'del'])->name('control.del');
+        route::get('/upgrade', [ControlController::class, 'chargement'])->name('control.charger');
     });
     route::prefix('unites')->group(function () {
         route::get('/update/{unite}', [uniteController::class, 'edit'])->name('unite.edit');

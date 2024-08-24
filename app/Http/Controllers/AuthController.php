@@ -15,7 +15,6 @@ class AuthController extends Controller
     {
         Session::flush();
         Auth::logout();
-        //     return view('Auth.login');
         return redirect()->route("login")->with("message", "Vous vous êtes deconnecté");
     }
     public function index()

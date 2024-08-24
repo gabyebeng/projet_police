@@ -39,6 +39,7 @@ class AppController extends Controller
         $totalEquipes = Equipe::all()->count();
         $present = Control::where('statut', '=', 'OK')->count();
         $absent = Control::where('statut', '=', 'PAS OK')->count();
+        $controls = Control::where('statut', '=', 'OK')->latest();
         if ($totalControls > 0) {
             $presentPourcentage = $present * 100 / $totalControls;
             $absentPourcentage = $absent * 100 / $totalControls;
@@ -54,7 +55,8 @@ class AppController extends Controller
             'totalUtilisateurs',
             'totalEquipes',
             'presentPourcentage',
-            'absentPourcentage'
+            'absentPourcentage',
+            'controls',
         ));
     }
 
