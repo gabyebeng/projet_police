@@ -106,7 +106,13 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Total Controlé Aujourd'hui :
                                     {{ $controlToday }}</a>
-                                <a class="dropdown-item" href="#">My Balance</a>
+                                @if (Auth::user()->role == 'Admin')
+                                    <a class="dropdown-item" href="#">Exportez les cofigurations</a>
+                                @else
+                                    <a class="dropdown-item" href="{{ route('configuration.index') }}">Importez les
+                                        cofigurations</a>
+                                @endif
+
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Synchronisation</a>
                                 <div class="dropdown-divider"></div>

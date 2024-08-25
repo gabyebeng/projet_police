@@ -18,16 +18,17 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Administrateur',
-        //     'email' => 'admin@rdc.com',
-        //     'password' => Hash::make('admin'),
-        //     'role' => 'Admin',
-        // ]);
+        User::factory()->create([
+            'name' => 'Administrateur',
+            'email' => 'admin@rdc.com',
+            'password' => Hash::make('admin'),
+            'role' => 'Admin',
+        ]);
         Equipe::factory()->create([
             'nom' => 'Demo',
-            'User_id' => 1,
         ]);
-        Unite::factory(10)->create();
+        // Unite::factory(10)->create();
+
+
     }
 }

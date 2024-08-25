@@ -17,8 +17,7 @@ class UniteFactory extends Factory
     public function definition(): array
     {
         return [
-            'nom' => $this->faker->text(10),
-            'equipe_id' => 1,
+            'nom' => $this->faker->name(),
         ];
     }
 }

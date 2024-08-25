@@ -19,14 +19,9 @@ class AppController extends Controller
                 ->orWhere('postnom', '=', $recherche)
                 ->orWhere('matricule', '=', $recherche)
                 ->orWhere('grade', '=', $recherche)
-                ->orWhere('prenom', '=', $recherche);
-        })
-            ->orWhereHas('unite', function ($query) use ($recherche) {
-                $query->where('nom', '=', $recherche);
-            })->latest()
-            ->get();
-
-
+                ->orWhere('prenom', '=', $recherche)
+                ->orWhere('unite_id', '=', $recherche);
+        })->latest()->get();
         return view('pages.policier', compact('policiers'));
     }
 
@@ -62,7 +57,7 @@ class AppController extends Controller
 
     public function listPolicier()
     {
-        $policiers = Policier::with('unite')->paginate(5);
+        $policiers = Policier::paginate(5);
         return view('pages.policier', compact('policiers'));
     }
 

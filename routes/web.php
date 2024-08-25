@@ -1,8 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\EmployerController;
-use App\Http\Controllers\DepartementController;
+use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\AppController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControlController;
@@ -57,6 +56,9 @@ route::middleware('auth')->group(function () {
         route::post('/', [UniteController::class, 'recherche_unite'])->name('unite.search');
         route::get('/', [UniteController::class, 'listUnite'])->name('unite.index');
     });
+    route::prefix('configurations')->group(function () {
+        route::get('/', [ConfigController::class, 'index'])->name('configuration.index');
+        route::post('/import', [ConfigController::class, 'importer'])->name('configuration.import');
+    });
 });
 
-route::get('/signup', [])->name('signup');

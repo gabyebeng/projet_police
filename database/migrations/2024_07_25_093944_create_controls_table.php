@@ -12,15 +12,19 @@ return new class extends Migration {
     {
         Schema::create('controls', function (Blueprint $table) {
             $table->id();
+            $table->string('matricule');
+            $table->string('nom');
+            $table->string('postnom');
+            $table->string('prenom');
+            $table->string('sexe');
+            $table->string('grade');
+            $table->string('unite_id');
             $table->string('statut')->default('PAS OK');
-            $table->unsignedBigInteger('policier_id');
-            $table->unsignedBigInteger('equipe_id')->default(1);
-            $table->unsignedBigInteger('unite_id');
-            $table->string('unite_Ctrl')->nullable();
-            $table->foreign('equipe_id')->references('id')->on('equipes');
-            $table->foreign('unite_id')->references('id')->on('unites');
-            $table->foreign('policier_id')->references('id')->on('policiers');
             $table->dateTime('dateCtrl')->nullable();
+            $table->string('unite_Ctrl')->nullable();
+            $table->unsignedBigInteger('equipe_id')->default(1);
+            $table->foreign('equipe_id')->references('id')->on('equipes');
+
             $table->timestamps();
         });
     }

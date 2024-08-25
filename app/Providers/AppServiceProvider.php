@@ -28,11 +28,6 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFour();
 
 
-        $currentYear = date('Y'); //pour l'année
-        $currentMonth = date('M'); //pour le mois
-        $currentDay = date('D'); //pour le jour
-
-
         view()->share("totalEquipe", Equipe::all()->count());
         view()->share("totalUser", User::all()->count());
         view()->share("totalControl", Control::all()->count());

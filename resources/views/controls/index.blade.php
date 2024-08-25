@@ -82,19 +82,19 @@
                                     <td class="">
 
 
-                                        {{ $control->policier->matricule }}
+                                        {{ $control->matricule }}
 
                                     </td>
                                     <td scope="row">
 
-                                        {{ $control->policier->nom }} {{ $control->policier->postnom }}
-                                        {{ $control->policier->prenom }}
+                                        {{ $control->nom }} {{ $control->postnom }}
+                                        {{ $control->prenom }}
                                     </td>
-                                    <td class="">{{ $control->policier->grade }}</td>
-                                    <td class="">{{ $control->unite->nom }}</td>
+                                    <td class="">{{ $control->grade }}</td>
+                                    <td class="">{{ $control->unite_id }}</td>
                                     <td class="">{{ $control->unite_Ctrl }}</td>
                                     <td class="">{{ $control->equipe->nom }}</td>
-                                    <td class="">{{ $control->policier->sexe }}</td>
+                                    <td class="">{{ $control->sexe }}</td>
                                     <td class="">{{ $control->dateCtrl }}</td>
                                     <td class="">
                                         @if ($control->statut == 'OK')

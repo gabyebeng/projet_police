@@ -9,18 +9,25 @@
             </div>
             <div class="card-body">
                 <div class="row g-4 settings-section">
-                    <div class="col-12 col-md-6">
-                        <h3 class="section-title">Importez la liste</h3>
-                        <div class="section-intro">
-                            <form action="" method="post" enctype="multipart/form-data">
-                                <div class="input-group"><input class="form-control" type="file" name="excel_file"
-                                        id="">
-                                    <input class="btn btn-primary" type="submit" value="Importer">
-                                </div>
+                    @if (Auth::user()->role == 'Admin')
+                        <div class="col-12 col-md-6">
+                            <h3 class="section-title">Importez la liste</h3>
+                            <div class="section-intro">
+                                <form action="{{ route('configuration.import') }}" method="post"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    @method('post')
+                                    <div class="input-group">
+                                        <input class="form-control" type="file" name="excel_file" id=""
+                                            required>
+                                        <input class="btn btn-primary" type="submit" value="Importer">
+                                    </div>
 
-                            </form>
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                    @endif
+
                     <div class="col-12 col-md-6">
                         <h3 class="section-title">Recherchez un policier</h3>
                         <div class="section-intro">
@@ -28,8 +35,8 @@
                                 @csrf
                                 @method('post')
                                 <div class="input-group">
-                                    <input type="text" placeholder="Recherche ..." name="recherche"
-                                        class="form-control" />
+                                    <input type="text" placeholder="Recherche ..." name="recherche" class="form-control"
+                                        required />
                                     <button type="submit" class="btn btn-success">
                                         <i class="fa fa-search search-icon"> Recherche</i>
                                     </button>
@@ -85,7 +92,7 @@
                                         {{ $policier->nom }} {{ $policier->postnom }} {{ $policier->prenom }}
                                     </td>
 
-                                    <td class="">{{ $policier->unite->nom }}</td>
+                                    <td class="">{{ $policier->unite_id }}</td>
                                     <td class="">{{ $policier->grade }}</td>
                                     <td class="">{{ $policier->sexe }}</td>
                                 </tr>
@@ -101,6 +108,7 @@
                             @endforelse
                         </tbody>
                     </table>
+                    {{-- {{ $policiers->links() }} --}}
                 </div>
             </div>
         </div>

@@ -18,7 +18,12 @@ class ControlController extends Controller
         if (Control::all()->count() == 0) {
             foreach ($policiers as $policier) {
                 $controls->create([
-                    'policier_id' => $policier->id,
+                    'matricule' => $policier->matricule,
+                    'nom' => $policier->nom,
+                    'postnom' => $policier->postnom,
+                    'prenom' => $policier->prenom,
+                    'sexe' => $policier->sexe,
+                    'grade' => $policier->grade,
                     'unite_id' => $policier->unite_id,
                 ]);
             }
@@ -37,6 +42,7 @@ class ControlController extends Controller
         }
 
         $control->statut = $request->statut;
+        $control->dateCtrl = today();
         $control->update();
         return redirect(route('control.index'))->with('message', 'Statut Modifié!');
     }
@@ -49,19 +55,27 @@ class ControlController extends Controller
         } else {
             $monId = Auth::user()->id;
             $monEq = Equipe::where('user_id', $monId)->first();
-            $monEqId = $monEq->id;
-            $unitesValide = Unite::where('equipe_id', $monEqId)->where('id', $control->unite->id)->count();
-
-            if ($unitesValide > 0) {
-
-                $monId = Auth::user()->id;
-                $monEq = Equipe::where('user_id', $monId)->first();
-                $monEqId = $monEq->id;
-                $unites = Unite::where('equipe_id', $monEqId)->with('equipe')->paginate(5);
-                return view('controls.edit', compact('control', 'unites'));
-            } else {
+            if ($monEq == null) {
                 return redirect()->back()->with('message', 'Le militaire ne fait pas partir des vos unités de control');
+            } else {
+                $monEqId = $monEq->id;
+                $policeUnite = Unite::where('nom', $control->unite_id)->first();
+                $idUnite = $policeUnite->id;
+                $unitesValide = Unite::where('equipe_id', $monEqId)->where('id', $idUnite)->count();
+
+                if ($unitesValide > 0) {
+
+                    $monId = Auth::user()->id;
+                    $monEq = Equipe::where('user_id', $monId)->first();
+                    $monEqId = $monEq->id;
+                    $unites = Unite::where('equipe_id', $monEqId)->with('equipe')->paginate(5);
+                    return view('controls.edit', compact('control', 'unites'));
+                } else {
+                    return redirect()->back()->with('message', 'Le militaire ne fait pas partir des vos unités de control');
+                }
             }
+
+
         }
 
     }
@@ -70,17 +84,12 @@ class ControlController extends Controller
 
         $recherche = $request->recherche;
         $controls = Control::where(function ($query) use ($recherche) {
-            $query->where('id', '=', $recherche);
-        })
-            ->orWhereHas('policier', function ($query) use ($recherche) {
-                $query->where('nom', '=', $recherche)
-                    ->orwhere('matricule', '=', $recherche)
-                    ->orwhere('postnom', '=', $recherche)
-                    ->orwhere('prenom', '=', $recherche);
-            })->latest()
+            $query->where('nom', '=', $recherche)
+                ->orwhere('matricule', '=', $recherche)
+                ->orwhere('postnom', '=', $recherche)
+                ->orwhere('prenom', '=', $recherche);
+        })->latest()
             ->get();
-
-
         return view('controls.index', compact('controls'));
     }
     public function del(Control $control)
@@ -90,7 +99,7 @@ class ControlController extends Controller
     }
     public function index()
     {
-        $controls = Control::with('unite', 'policier', 'equipe')->paginate(5);
+        $controls = Control::with('equipe')->paginate(5);
         return view('controls.index', compact('controls'));
     }
 }

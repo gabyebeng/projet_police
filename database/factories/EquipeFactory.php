@@ -17,7 +17,8 @@ class EquipeFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nom' => $this->faker->name(),
+            'user_id' => 1,
         ];
     }
 }

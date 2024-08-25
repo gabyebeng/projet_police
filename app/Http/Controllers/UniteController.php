@@ -17,8 +17,14 @@ class UniteController extends Controller
         } else {
             $monId = Auth::user()->id;
             $monEq = Equipe::where('user_id', $monId)->first();
-            $monEqId = $monEq->id;
-            $unites = Unite::where('equipe_id', $monEqId)->with('equipe')->paginate(5);
+            if ($monEq == null) {
+                $monEqId = 0;
+                $unites = Unite::where('equipe_id', $monEqId)->with('equipe')->paginate(5);
+            } else {
+                $monEqId = $monEq->id;
+                $unites = Unite::where('equipe_id', $monEqId)->with('equipe')->paginate(5);
+            }
+
 
             return view('unites.index', compact('unites'));
         }

@@ -10,10 +10,6 @@ class Control extends Model
     use HasFactory;
     protected $guarded = [""];
 
-    public function policier()
-    {
-        return $this->belongsTo(Policier::class, 'policier_id');
-    }
     public function unite()
     {
         return $this->belongsTo(Unite::class, 'unite_id');
