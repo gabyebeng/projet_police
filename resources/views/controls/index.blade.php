@@ -32,17 +32,29 @@
                         @endif
                     </div>
                     <div class="card-tools">
-                        <a href="#" class="btn btn-label-success btn-round btn-sm me-2">
+                        <a href="{{ route('export.control') }}" class="btn btn-label-success btn-round btn-sm me-2">
                             <span class="btn-label">
-                                <i class="fa fa-pencil"></i>
+                                <i class="fa fa-upload"></i>
                             </span>
-                            Exporter
+                            Exporter les présents
+                        </a>
+                        <a href="{{ route('export.absent') }}" class="btn btn-label-success btn-round btn-sm me-2">
+                            <span class="btn-label">
+                                <i class="fa fa-upload"></i>
+                            </span>
+                            Exporter les absents
                         </a>
                         <a href="#" class="btn btn-label-info btn-round btn-sm">
                             <span class="btn-label">
                                 <i class="fa fa-print"></i>
                             </span>
-                            Imprimer
+                            Imprimer les présents
+                        </a>
+                        <a href="#" class="btn btn-label-info btn-round btn-sm">
+                            <span class="btn-label">
+                                <i class="fa fa-print"></i>
+                            </span>
+                            Imprimer les absents
                         </a>
                     </div>
                 </div>
@@ -60,7 +72,6 @@
                                 <th scope="col" class="">Unité BDD</th>
                                 <th scope="col" class="">Unité Du Control</th>
                                 <th scope="col" class="">Equipe Du Control</th>
-                                <th scope="col" class="">Sexe</th>
                                 <th scope="col" class="">Date Du Control</th>
                                 <th scope="col" class="">Status</th>
                             </tr>
@@ -87,14 +98,12 @@
                                     </td>
                                     <td scope="row">
 
-                                        {{ $control->nom }} {{ $control->postnom }}
-                                        {{ $control->prenom }}
+                                        {{ $control->nom }}
                                     </td>
                                     <td class="">{{ $control->grade }}</td>
                                     <td class="">{{ $control->unite_id }}</td>
                                     <td class="">{{ $control->unite_Ctrl }}</td>
                                     <td class="">{{ $control->equipe->nom }}</td>
-                                    <td class="">{{ $control->sexe }}</td>
                                     <td class="">{{ $control->dateCtrl }}</td>
                                     <td class="">
                                         @if ($control->statut == 'OK')
@@ -123,6 +132,7 @@
                             @endforelse
                         </tbody>
                     </table>
+                    {{ $controls->links() }}
                 </div>
             </div>
         </div>

@@ -12,9 +12,11 @@
                     <div class="col-12 col-md-6">
                         <h3 class="section-title">Importez la liste des unités</h3>
                         <div class="section-intro">
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('import.unite') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                @method('post')
                                 <div class="input-group">
-                                    <input class="form-control" type="file" name="excel_file" id="">
+                                    <input class="form-control" type="file" name="excel_file" id="" required>
                                     <input class="btn btn-primary" type="submit" value="Importer">
                                 </div>
 

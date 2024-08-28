@@ -20,11 +20,9 @@ class ControlController extends Controller
                 $controls->create([
                     'matricule' => $policier->matricule,
                     'nom' => $policier->nom,
-                    'postnom' => $policier->postnom,
-                    'prenom' => $policier->prenom,
-                    'sexe' => $policier->sexe,
                     'grade' => $policier->grade,
                     'unite_id' => $policier->unite_id,
+                    'province' => $policier->province,
                 ]);
             }
         }
@@ -84,12 +82,11 @@ class ControlController extends Controller
 
         $recherche = $request->recherche;
         $controls = Control::where(function ($query) use ($recherche) {
-            $query->where('nom', '=', $recherche)
-                ->orwhere('matricule', '=', $recherche)
-                ->orwhere('postnom', '=', $recherche)
-                ->orwhere('prenom', '=', $recherche);
-        })->latest()
-            ->get();
+            $query->where('nom', 'like', '%' . $recherche . '%')
+                ->orwhere('matricule', '=', $recherche);
+        })->orWhereHas('equipe', function ($query) use ($recherche) {
+            $query->where('nom', '=', $recherche);
+        })->latest()->paginate(5);
         return view('controls.index', compact('controls'));
     }
     public function del(Control $control)
@@ -99,7 +96,7 @@ class ControlController extends Controller
     }
     public function index()
     {
-        $controls = Control::with('equipe')->paginate(5);
+        $controls = Control::with('equipe')->latest()->paginate(50);
         return view('controls.index', compact('controls'));
     }
 }

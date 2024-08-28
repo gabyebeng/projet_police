@@ -24,6 +24,7 @@ class PoliciersImport implements ToCollection, WithHeadingRow
                     'sexe' => $row['sexe'],
                     'grade' => $row['grade'],
                     'unite_id' => $row['unite_id'],
+                    'province' => $row['province'],
                 ]);
             } else {
                 Policier::create([
@@ -34,6 +35,7 @@ class PoliciersImport implements ToCollection, WithHeadingRow
                     'sexe' => $row['sexe'],
                     'grade' => $row['grade'],
                     'unite_id' => $row['unite_id'],
+                    'province' => $row['province'],
                 ]);
             }
 

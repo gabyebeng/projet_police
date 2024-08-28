@@ -17,6 +17,7 @@
                         <table class="table align-items-center mb-0 table table-striped table-hover">
                             <thead class="thead-dark">
                                 <tr>
+                                    <th><input type="checkbox" name="" id="select_all_ids"></th>
                                     <th scope="col">Utilisateur</th>
                                     <th scope="col" class="">Adresse Mail</th>
                                     <th scope="col" class="">Role</th>
@@ -28,6 +29,7 @@
                             <tbody class="table table-bordered">
                                 @forelse($users as $user)
                                     <tr>
+                                        <td><input type="checkbox" name="ids" class="checkbox_ids" id="ids"></td>
                                         <td scope="row">
                                             {{ $user->name }}
                                         </td>
@@ -102,4 +104,13 @@
 
         </div><!--//row-->
     </div><!--//container-fluid-->
+
+
+    <script>
+        $(function(e) {
+            $("select_all_ids").click(function() {
+                $(".checkbox_ids").prop("checked", $(this).prop("cheked"));
+            });
+        });
+    </script>
 @endsection

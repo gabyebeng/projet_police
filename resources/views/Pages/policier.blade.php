@@ -36,7 +36,7 @@
                                 @method('post')
                                 <div class="input-group">
                                     <input type="text" placeholder="Recherche ..." name="recherche" class="form-control"
-                                        required />
+                                        required value="{{ old('recherche') }}" />
                                     <button type="submit" class="btn btn-success">
                                         <i class="fa fa-search search-icon"> Recherche</i>
                                     </button>
@@ -54,14 +54,6 @@
         <div class="card card-round">
             <div class="card-header">
                 <div class="card-head-row card-tools-still-right">
-                    <form action="{{ route('policier.search') }}" method="post">
-                        @csrf
-                        @method('POST')
-                        <nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
-
-                        </nav>
-                    </form>
-
                     <div class="card-title">Policiers dans la base des données</div>
                 </div>
 
@@ -77,7 +69,7 @@
                                 <th scope="col">Nom, PostNom & Prénom</th>
                                 <th scope="col" class="">Unité BDD</th>
                                 <th scope="col" class="">Grade</th>
-                                <th scope="col" class="">Sexe</th>
+                                <th scope="col" class="">Province</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -89,12 +81,12 @@
                                     </td>
                                     <td scope="row">
 
-                                        {{ $policier->nom }} {{ $policier->postnom }} {{ $policier->prenom }}
+                                        {{ $policier->nom }}
                                     </td>
 
                                     <td class="">{{ $policier->unite_id }}</td>
                                     <td class="">{{ $policier->grade }}</td>
-                                    <td class="">{{ $policier->sexe }}</td>
+                                    <td class="">{{ $policier->province }}</td>
                                 </tr>
 
                             @empty
@@ -108,7 +100,7 @@
                             @endforelse
                         </tbody>
                     </table>
-                    {{-- {{ $policiers->links() }} --}}
+                    {{ $policiers->links() }}
                 </div>
             </div>
         </div>

@@ -15,13 +15,10 @@ class AppController extends Controller
     {
         $recherche = $request->recherche;
         $policiers = Policier::where(function ($query) use ($recherche) {
-            $query->where('nom', '=', $recherche)
-                ->orWhere('postnom', '=', $recherche)
+            $query->where('nom', 'like', '%' . $recherche . '%')
                 ->orWhere('matricule', '=', $recherche)
-                ->orWhere('grade', '=', $recherche)
-                ->orWhere('prenom', '=', $recherche)
-                ->orWhere('unite_id', '=', $recherche);
-        })->latest()->get();
+                ->orWhere('unite_id', 'LIKE', '%' . $recherche . '%');
+        })->latest()->paginate(50);
         return view('pages.policier', compact('policiers'));
     }
 
@@ -57,7 +54,8 @@ class AppController extends Controller
 
     public function listPolicier()
     {
-        $policiers = Policier::paginate(5);
+        // $policiers = Policier::paginate(50);
+        $policiers = Policier::paginate(50);
         return view('pages.policier', compact('policiers'));
     }
 

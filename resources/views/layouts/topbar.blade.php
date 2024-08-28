@@ -40,34 +40,39 @@
                 <li class="nav-item topbar-icon dropdown hidden-caret">
                     <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-bell"></i>
-                        <span class="notification">4</span>
+                        <i class="fa fa-cogs"></i>
+                        <span class="notification">2</span>
                     </a>
                     <ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
                         <li>
                             <div class="dropdown-title">
-                                Vous avez 4 Utilisateurs a activer
+                                Configurations
                             </div>
                         </li>
                         <li>
                             <div class="notif-scroll scrollbar-outer">
                                 <div class="notif-center">
-                                    <a href="#">
-                                        <div class="notif-icon notif-primary">
-                                            <i class="fa fa-user-plus"></i>
-                                        </div>
-                                        <div class="notif-content">
-                                            <span class="block"> Gaby EBENG</span>
-                                            <span class="time">Inscrit y a 5 minutes</span>
-                                        </div>
-                                    </a>
+
+                                    <div class="notif-content">
+                                        @if (Auth::user()->role == 'Admin')
+                                            <a class="dropdown-item" href="{{ route('export.unite') }}">Exportez les
+                                                cofigurations "UNITE"</a>
+                                            <a class="dropdown-item" href="{{ route('export.policier') }}">Exportez
+                                                les
+                                                cofigurations "POLICIER"</a>
+                                        @else
+                                            <a class="dropdown-item" href="{{ route('configuration.index') }}">Importez
+                                                les
+                                                cofigurations</a>
+                                        @endif
+                                        @if ($totalControl == 0)
+                                            <a href="{{ route('control.charger') }}" class="dropdown-item">Charger les
+                                                controls</a>
+                                        @else
+                                            <p class="dropdown-item">Liste Control chargée</p>
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="see-all" href="javascript:void(0);">See all notifications<i
-                                    class="fa fa-angle-right"></i>
-                            </a>
                         </li>
                     </ul>
                 </li>
@@ -106,13 +111,6 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Total Controlé Aujourd'hui :
                                     {{ $controlToday }}</a>
-                                @if (Auth::user()->role == 'Admin')
-                                    <a class="dropdown-item" href="#">Exportez les cofigurations</a>
-                                @else
-                                    <a class="dropdown-item" href="{{ route('configuration.index') }}">Importez les
-                                        cofigurations</a>
-                                @endif
-
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Synchronisation</a>
                                 <div class="dropdown-divider"></div>

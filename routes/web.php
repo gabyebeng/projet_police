@@ -58,7 +58,13 @@ route::middleware('auth')->group(function () {
     });
     route::prefix('configurations')->group(function () {
         route::get('/', [ConfigController::class, 'index'])->name('configuration.index');
-        route::post('/import', [ConfigController::class, 'importer'])->name('configuration.import');
+        route::post('/import', [ConfigController::class, 'importerPolicier'])->name('configuration.import');
+        route::post('/import-unite', [ConfigController::class, 'importerUnite'])->name('import.unite');
+        route::get('/export-unite', [ConfigController::class, 'exportUnite'])->name('export.unite');
+        route::get('/export-policier', [ConfigController::class, 'exportPolicier'])->name('export.policier');
+        route::get('/export-present', [ConfigController::class, 'exportControl'])->name('export.control');
+        route::get('/export-absent', [ConfigController::class, 'exportAbsent'])->name('export.absent');
+        route::get('/charge_unite', [ConfigController::class, 'chargeUniteImport'])->name('charger.unite');
     });
 });
 

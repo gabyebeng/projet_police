@@ -14,11 +14,9 @@ return new class extends Migration {
             $table->id();
             $table->string('matricule');
             $table->string('nom');
-            $table->string('postnom');
-            $table->string('prenom');
-            $table->string('sexe');
             $table->string('grade');
             $table->string('unite_id');
+            $table->string('province');
             $table->string('statut')->default('PAS OK');
             $table->dateTime('dateCtrl')->nullable();
             $table->string('unite_Ctrl')->nullable();

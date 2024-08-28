@@ -12,14 +12,20 @@ class Equipe extends Model
         'nom',
         'user_id',
     ];
-
-    public function unite(){
+    public function control()
+    {
+        return $this->hasMany(Control::class, 'control_id');
+    }
+    public function unite()
+    {
         return $this->hasMany(Unite::class);
     }
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
-    public function mission(){
+    public function mission()
+    {
         return $this->hasMany(Mission::class);
     }
 }
