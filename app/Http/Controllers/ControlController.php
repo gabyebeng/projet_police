@@ -79,14 +79,18 @@ class ControlController extends Controller
     }
     public function recherche(Request $request)
     {
-
         $recherche = $request->recherche;
-        $controls = Control::where(function ($query) use ($recherche) {
-            $query->where('nom', 'like', '%' . $recherche . '%')
-                ->orwhere('matricule', '=', $recherche);
-        })->orWhereHas('equipe', function ($query) use ($recherche) {
-            $query->where('nom', '=', $recherche);
-        })->latest()->paginate(5);
+        if ($recherche == "") {
+            $controls = Control::latest()->orderBy("dateCtrl", "desc")->paginate(10);
+        } else {
+            $controls = Control::where(function ($query) use ($recherche) {
+                $query->where('nom', 'like', '%' . $recherche . '%')
+                    ->orwhere('matricule', '=', $recherche)
+                    ->orwhere('unite_id', 'like', '%' . $recherche . '%');
+            })->orWhereHas('equipe', function ($query) use ($recherche) {
+                $query->where('nom', '=', $recherche);
+            })->latest()->orderBy("dateCtrl", "desc")->paginate(10);
+        }
         return view('controls.index', compact('controls'));
     }
     public function del(Control $control)
@@ -96,7 +100,7 @@ class ControlController extends Controller
     }
     public function index()
     {
-        $controls = Control::with('equipe')->latest()->paginate(50);
+        $controls = Control::with('equipe')->latest()->orderBy("dateCtrl", "desc")->paginate(50);
         return view('controls.index', compact('controls'));
     }
 }
