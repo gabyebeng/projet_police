@@ -6,7 +6,7 @@ use App\Models\Unite;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class UniteExport implements FromCollection, WithHeadings
+class UniteExportFile implements FromCollection, WithHeadings
 {
     /**
      * @return \Illuminate\Support\Collection
@@ -19,7 +19,8 @@ class UniteExport implements FromCollection, WithHeadings
     {
         return [
             'nom',
-            'equipe_id'
+            'equipe_id',
+
         ];
     }
 }

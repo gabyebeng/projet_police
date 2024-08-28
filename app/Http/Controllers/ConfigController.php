@@ -6,6 +6,7 @@ use App\Exports\ControlAbsentExport;
 use App\Exports\ControlExport;
 use App\Exports\PolicierExport;
 use App\Exports\UniteExport;
+use App\Exports\UniteExportFile;
 use App\Imports\ChargeUniteImport;
 use App\Imports\PoliciersImport;
 use App\Imports\UniteImport;
@@ -18,22 +19,10 @@ class ConfigController extends Controller
     {
         return view("configurations.index");
     }
-    public function exportAbsent()
-    {
-        return Excel::download(new ControlAbsentExport, "Absents_A_Unite.xlsx");
-    }
-    public function exportControl()
-    {
-        return Excel::download(new ControlExport, "Presents_A_Unite.xlsx");
-    }
-    public function exportPolicier()
-    {
-        return Excel::download(new PolicierExport, "Policier-Config.xlsx");
-    }
+
     public function exportUnite()
     {
-        // return Excel::download(new PolicierExport, "Policier-Config.xlsx");
-        return Excel::download(new UniteExport, "Unite-Config.xlsx");
+        return Excel::download(new UniteExportFile, "Unite-Config.xlsx");
     }
     public function chargeUniteImport(Request $request)
     {
@@ -50,5 +39,17 @@ class ConfigController extends Controller
     {
         Excel::import(new PoliciersImport, $request->file("excel_file"));
         return redirect()->back()->with("message", "Importation ok");
+    }
+    public function exportAbsent()
+    {
+        return Excel::download(new ControlAbsentExport, "Absents_A_Unite.xlsx");
+    }
+    public function exportControl()
+    {
+        return Excel::download(new ControlExport, "Presents_A_Unite.xlsx");
+    }
+    public function exportPolicier()
+    {
+        return Excel::download(new PolicierExport, "Policier-Config.xlsx");
     }
 }

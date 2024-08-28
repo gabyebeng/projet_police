@@ -12,7 +12,7 @@
                     <div class="col-12 col-md-6">
                         <h3 class="section-title">Importez la liste des unités</h3>
                         <div class="section-intro">
-                            <form action="{{ route('import.unite') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('charger.unite') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('post')
                                 <div class="input-group">
