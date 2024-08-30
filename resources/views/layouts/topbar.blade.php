@@ -112,7 +112,7 @@
                                 <a class="dropdown-item" href="#">Total Controlé Aujourd'hui :
                                     {{ $controlToday }}</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Synchronisation</a>
+                                <a class="dropdown-item" href="{{ route('synchronisation') }}">Synchronisation</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('user.deconnecter') }}">Deconnecter</a>
                             </li>

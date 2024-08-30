@@ -10,11 +10,34 @@ use App\Exports\UniteExportFile;
 use App\Imports\ChargeUniteImport;
 use App\Imports\PoliciersImport;
 use App\Imports\UniteImport;
+use App\Models\Control;
+use App\Models\Servcontrol;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ConfigController extends Controller
 {
+    public function synchronisation()
+    {
+        $control = Control::where('statut', 'OK')->get();
+        foreach ($control as $row) {
+            $servcontrol = Servcontrol::where('matricule', $row['matricule'])->first();
+            if ($servcontrol) {
+                $servcontrol->update([
+                    'statut' => $row['statut'],
+                ]);
+            } else {
+                Servcontrol::create([
+                    'matricule' => $row['matricule'],
+                    'nom' => $row['nom'],
+                    'grade' => $row['grade'],
+                    'statut' => $row['statut'],
+                ]);
+            }
+
+        }
+        return redirect()->back();
+    }
     public function index()
     {
         return view("configurations.index");

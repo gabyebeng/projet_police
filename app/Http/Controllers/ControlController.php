@@ -8,6 +8,7 @@ use App\Models\Policier;
 use App\Models\Unite;
 use App\Models\Equipe;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Stmt\TryCatch;
 
 class ControlController extends Controller
 {
@@ -58,19 +59,24 @@ class ControlController extends Controller
             } else {
                 $monEqId = $monEq->id;
                 $policeUnite = Unite::where('nom', $control->unite_id)->first();
-                $idUnite = $policeUnite->id;
-                $unitesValide = Unite::where('equipe_id', $monEqId)->where('id', $idUnite)->count();
+                try {
+                    $idUnite = $policeUnite->id;
+                    $unitesValide = Unite::where('equipe_id', $monEqId)->where('id', $idUnite)->count();
 
-                if ($unitesValide > 0) {
+                    if ($unitesValide > 0) {
 
-                    $monId = Auth::user()->id;
-                    $monEq = Equipe::where('user_id', $monId)->first();
-                    $monEqId = $monEq->id;
-                    $unites = Unite::where('equipe_id', $monEqId)->with('equipe')->paginate(5);
-                    return view('controls.edit', compact('control', 'unites'));
-                } else {
+                        $monId = Auth::user()->id;
+                        $monEq = Equipe::where('user_id', $monId)->first();
+                        $monEqId = $monEq->id;
+                        $unites = Unite::where('equipe_id', $monEqId)->with('equipe')->get();
+                        return view('controls.edit', compact('control', 'unites'));
+                    } else {
+                        return redirect()->back()->with('message', 'Le militaire ne fait pas partir des vos unités de control');
+                    }
+                } catch (\Exception $e) {
                     return redirect()->back()->with('message', 'Le militaire ne fait pas partir des vos unités de control');
                 }
+
             }
 
 

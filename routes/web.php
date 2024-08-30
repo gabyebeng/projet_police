@@ -64,6 +64,8 @@ route::middleware('auth')->group(function () {
         route::get('/export-policier', [ConfigController::class, 'exportPolicier'])->name('export.policier');
         route::get('/export-present', [ConfigController::class, 'exportControl'])->name('export.control');
         route::get('/export-absent', [ConfigController::class, 'exportAbsent'])->name('export.absent');
+
+        route::get('/synchronisation', [ConfigController::class, 'synchronisation'])->name('synchronisation');
         route::post('/charge_unite', [ConfigController::class, 'chargeUniteImport'])->name('charger.unite');
     });
 });
