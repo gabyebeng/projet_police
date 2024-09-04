@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('nom');
             $table->string('grade');
             $table->string('unite_id');
-            $table->string('province');
+            $table->string('province')->default(null);
             $table->string('statut')->default('PAS OK');
             $table->dateTime('dateCtrl')->nullable();
             $table->string('unite_Ctrl')->nullable();

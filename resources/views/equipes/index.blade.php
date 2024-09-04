@@ -11,21 +11,20 @@
                             @method('post')
                             <div class="input-group">
                                 <input name="nom" type="text" placeholder="Déscription equipe"
-                                    value="{{ old('nom') }}" class="form-control @error('nom') is-invalid @enderror"
+                                    value="{{ old('nom') }}" class="ms-2 form-control @error('nom') is-invalid @enderror"
                                     required />
-                                <<>>
-                                    <select name="user_id" id="user_id" class="form-control" required>
-                                        <option value="">Utilisateur Associé</option>
-                                        @forelse($users as $user)
-                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                        @empty
-                                            <option value="">Aucun user disponible</option>
-                                        @endforelse
-                                    </select>
+                                <select name="user_id" id="user_id" class="form-control ms-2 me-2" required>
+                                    <option value="">Utilisateur Associé</option>
+                                    @forelse($users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @empty
+                                        <option value="">Aucun user disponible</option>
+                                    @endforelse
+                                </select>
 
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-save save-icon"> Ajouter</i>
-                                    </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-save save-icon"> Ajouter</i>
+                                </button>
                             </div>
                         </form>
                 </div>

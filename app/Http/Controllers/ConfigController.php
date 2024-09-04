@@ -34,6 +34,9 @@ class ConfigController extends Controller
                     'statut' => $row['statut'],
                     'unite_id' => $row['unite_id'],
                     'equipe_id' => $row['equipe_id'],
+                    'province' => $row['province'],
+                    'unite_Ctrl' => $row['unite_Ctrl'],
+                    'dateCtrl' => $row['dateCtrl'],
                 ]);
             }
 

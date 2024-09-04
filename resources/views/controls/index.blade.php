@@ -72,6 +72,7 @@
                                 <th scope="col" class="">Unité BDD</th>
                                 <th scope="col" class="">Unité Du Control</th>
                                 <th scope="col" class="">Equipe Du Control</th>
+                                <th scope="col" class="">Province</th>
                                 <th scope="col" class="">Date Du Control</th>
                                 <th scope="col" class="">Status</th>
                             </tr>
@@ -104,6 +105,7 @@
                                     <td class="">{{ $control->unite_id }}</td>
                                     <td class="">{{ $control->unite_Ctrl }}</td>
                                     <td class="">{{ $control->equipe->nom }}</td>
+                                    <td class="">{{ $control->province }}</td>
                                     <td class="">{{ $control->dateCtrl }}</td>
                                     <td class="">
                                         @if ($control->statut == 'OK')

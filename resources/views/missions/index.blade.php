@@ -5,27 +5,26 @@
             <div class="card-header">
                 @if (Auth::user()->role == 'Admin')
                     <div class="card-head-row card-tools-still-right">
-                        <div class="card-title">Créer une Mission Ici!</div>
+                        <div class="card-title">Créer une Mission Ici! : </div>
                         <form action="{{ route('mission.ajouter') }}" method="post">
                             @csrf
                             @method('post')
                             <div class="input-group">
                                 <input name="nom" type="text" placeholder="Déscription equipe"
-                                    class="form-control @error('nom') is-invalid @enderror" value="{{ old('nom') }}"
+                                    class="ms-2 form-control @error('nom') is-invalid @enderror" value="{{ old('nom') }}"
                                     required />
-                                <<>>
-                                    <select name="equipe_id" id="equipe_id" class="form-control" required>
-                                        <option value="">Equipe Associée</option>
-                                        @forelse($equipes as $equipe)
-                                            <option value="{{ $equipe->id }}">{{ $equipe->nom }}</option>
-                                        @empty
-                                            <option value="">Aucune Equipe disponible</option>
-                                        @endforelse
-                                    </select>
+                                <select name="equipe_id" id="equipe_id" class="form-control ms-2 me-2" required>
+                                    <option value="">Equipe Associée</option>
+                                    @forelse($equipes as $equipe)
+                                        <option value="{{ $equipe->id }}">{{ $equipe->nom }}</option>
+                                    @empty
+                                        <option value="">Aucune Equipe disponible</option>
+                                    @endforelse
+                                </select>
 
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-save save-icon"> Ajouter</i>
-                                    </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-save save-icon"> Ajouter</i>
+                                </button>
                             </div>
                         </form>
                     </div>
