@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\StatistiqueController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControlController;
 use App\Http\Controllers\EquipeController;
@@ -67,6 +68,10 @@ route::middleware('auth')->group(function () {
 
         route::get('/synchronisation', [ConfigController::class, 'synchronisation'])->name('synchronisation');
         route::post('/charge_unite', [ConfigController::class, 'chargeUniteImport'])->name('charger.unite');
+    });
+    route::prefix('statistiques')->group(function () {
+        route::get('/', [StatistiqueController::class, 'index'])->name('statistique.index');
+        route::get('/provinces', [StatistiqueController::class, 'statProvince'])->name('statistique.province');
     });
 });
 

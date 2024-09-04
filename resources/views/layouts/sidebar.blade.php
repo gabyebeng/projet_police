@@ -38,12 +38,12 @@
                 </li>
                 @if (Auth::user()->role == 'Admin')
                     <li class="nav-item">
-                        <a href="#base">
+                        <a href="{{ route('statistique.province') }}">
                             <p>Statistique Provinciales</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#base">
+                        <a href="{{ route('statistique.index') }}">
                             <p>Statistique Equipes</p>
                         </a>
                     </li>

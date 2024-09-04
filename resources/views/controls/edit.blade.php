@@ -31,8 +31,10 @@
                                         <option value="">Aucun unite disponible pour votre equipe</option>
                                     @endforelse
                                 </select>
-                            </div>
-                            <button type="submit" class="btn btn-success">Mise à jour</button>
+                                <select name="province" id="province">
+                                    <option value="">Province</option>
+                                </select>
+                                <button type="submit" class="btn btn-success">Mise à jour</button>
                         </form>
                     </div><!--//app-card-body-->
                 </div><!--//app-card-->

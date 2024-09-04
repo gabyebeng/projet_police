@@ -32,6 +32,8 @@ class ConfigController extends Controller
                     'nom' => $row['nom'],
                     'grade' => $row['grade'],
                     'statut' => $row['statut'],
+                    'unite_id' => $row['unite_id'],
+                    'equipe_id' => $row['equipe_id'],
                 ]);
             }
 
