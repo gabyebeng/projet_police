@@ -2,6 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Equipe;
+use App\Models\Mission;
+use App\Models\ServEquipe;
+use App\Models\ServMission;
+use App\Models\ServUnite;
+use App\Models\Unite;
+use App\Models\UserServ;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AuthRequest;
@@ -42,15 +50,61 @@ class AuthController extends Controller
     {
         return view('Auth.login');
     }
-    public function handleLogin(AuthRequest $request)
+    public function handleLogin(AuthRequest $request, User $user, Equipe $equipe, Unite $unite, Mission $mission)
     {
-        $credentials = $request->only(['email', 'password']);
-        if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard');
-            // return redirect()->back()-> with('message', 'user connected');
+
+        $totalUser = User::all()->count();
+        if ($totalUser > 0) {
+            $credentials = $request->only(['email', 'password']);
+            if (Auth::attempt($credentials)) {
+                return redirect()->route('dashboard');
+            } else {
+                return redirect()->back()->with('message', 'parametres de connexion incorrects!');
+            }
         } else {
-            return redirect()->back()->with('message', 'parametre de connexion incorrect!');
-            // return view('Auth.login')-> with('message', 'parametre de connexion incorrect!');
+            try {
+
+                $oldEquipes = ServEquipe::all();
+                $oldUnites = ServUnite::all();
+                $oldUsers = UserServ::all();
+                $oldMissions = ServMission::all();
+                foreach ($oldUsers as $oldUser) {
+                    $user->create([
+                        'id' => $oldUser->id,
+                        'name' => $oldUser->name,
+                        'email' => $oldUser->email,
+                        'password' => $oldUser->password,
+                        'role' => $oldUser->role,
+                    ]);
+                }
+
+                foreach ($oldEquipes as $oldEquipe) {
+                    $equipe->create([
+                        'id' => $oldEquipe->id,
+                        'nom' => $oldEquipe->nom,
+                        'user_id' => $oldEquipe->user_id,
+                    ]);
+                }
+
+                foreach ($oldUnites as $oldUnite) {
+                    $unite->create([
+                        'id' => $oldUnite->id,
+                        'nom' => $oldUnite->nom,
+                        'equipe_id' => $oldUnite->equipe_id,
+                    ]);
+                }
+
+                foreach ($oldMissions as $oldMission) {
+                    $mission->create([
+                        'id' => $oldMission->id,
+                        'nom' => $oldMission->nom,
+                        'equipe_id' => $oldMission->equipe_id,
+                    ]);
+                }
+                return redirect()->back()->with('message', 'Données chargées, Réconnectez-vous!');
+            } catch (Exception $e) {
+                return redirect()->back()->with('message', 'Le serveur distant injoinnable!');
+            }
         }
     }
 }
