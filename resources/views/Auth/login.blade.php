@@ -30,7 +30,9 @@
                         @csrf
                         @method('POST')
                         @if (session()->has('message'))
-                            <div class="text text-danger">{{ session()->get('message') }}</div>
+                            <div class="bg-success text-white p-3">
+                                <h4>{{ session()->get('message') }}</h3>
+                            </div>
                         @endif
                         <div class="text-center">
                             <img src="{{ asset('assets/img/kaiadmin/logo3.png') }}"

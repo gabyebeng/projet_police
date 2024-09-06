@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipe;
 use App\Models\Mission;
+use App\Models\Policier;
 use App\Models\ServEquipe;
 use App\Models\ServMission;
+use App\Models\ServPolicier;
 use App\Models\ServUnite;
 use App\Models\Unite;
 use App\Models\UserServ;
@@ -50,9 +52,16 @@ class AuthController extends Controller
     {
         return view('Auth.login');
     }
-    public function handleLogin(AuthRequest $request, User $user, Equipe $equipe, Unite $unite, Mission $mission)
-    {
+    public function handleLogin(
+        AuthRequest $request,
+        User $user,
+        Equipe $equipe,
+        Unite $unite,
+        Mission $mission,
+        Policier $policier
+    ) {
 
+        ini_set('max_execution_time', 3600);
         $totalUser = User::all()->count();
         if ($totalUser > 0) {
             $credentials = $request->only(['email', 'password']);
@@ -63,7 +72,7 @@ class AuthController extends Controller
             }
         } else {
             try {
-
+                $oldPoliciers = ServPolicier::all();
                 $oldEquipes = ServEquipe::all();
                 $oldUnites = ServUnite::all();
                 $oldUsers = UserServ::all();
@@ -101,6 +110,17 @@ class AuthController extends Controller
                         'equipe_id' => $oldMission->equipe_id,
                     ]);
                 }
+
+                foreach ($oldPoliciers as $oldpolicier) {
+                    $policier->create([
+                        'matricule' => $oldpolicier->matricule,
+                        'nom' => $oldpolicier->nom,
+                        'grade' => $oldpolicier->grade,
+                        'unite_id' => $oldpolicier->unite_id,
+                        'province' => $oldpolicier->province,
+                    ]);
+                }
+
                 return redirect()->back()->with('message', 'Données chargées, Réconnectez-vous!');
             } catch (Exception $e) {
                 return redirect()->back()->with('message', 'Le serveur distant injoinnable!');

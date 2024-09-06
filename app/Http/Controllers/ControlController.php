@@ -14,6 +14,7 @@ class ControlController extends Controller
 {
     public function chargement(Control $controls)
     {
+        ini_set('max_execution_time', 3600);
         $policiers = Policier::all();
 
         if (Control::all()->count() == 0) {

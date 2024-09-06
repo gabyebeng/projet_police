@@ -14,9 +14,6 @@ return new class extends Migration {
             $table->id();
             $table->string('matricule');
             $table->string('nom');
-            $table->string('postnom');
-            $table->string('prenom');
-            $table->string('sexe');
             $table->string('grade');
             $table->string('unite_id');
             $table->string('province');
