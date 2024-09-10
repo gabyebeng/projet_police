@@ -10,9 +10,27 @@ class StatistiqueController extends Controller
 {
     public function index()
     {
-        $equipe_1 = Equipe::with('user')->where("id", 1);
-        $totEq_1 = Control::where("id", 1)->count();
-        return view("statistiques.index", compact("totEq_1"));
+        // $equipe_1 = Equipe::with('user')->where("id", 2);
+        $totEq_1 = Control::where("equipe_id", 2)->count();
+        $totEq_2 = Control::where("equipe_id", 3)->count();
+        $totEq_3 = Control::where("equipe_id", 4)->count();
+        $totEq_4 = Control::where("equipe_id", 5)->count();
+        $totEq_5 = Control::where("equipe_id", 6)->count();
+        $totEq_6 = Control::where("equipe_id", 7)->count();
+        $totEq_7 = Control::where("equipe_id", 8)->count();
+        $totEq_8 = Control::where("equipe_id", 9)->count();
+        $totEq_9 = Control::where("equipe_id", 10)->count();
+        return view("statistiques.index", compact(
+            "totEq_1",
+            "totEq_2",
+            "totEq_3",
+            "totEq_4",
+            "totEq_5",
+            "totEq_6",
+            "totEq_7",
+            "totEq_8",
+            "totEq_9"
+        ));
     }
     public function statProvince()
     {

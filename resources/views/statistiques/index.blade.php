@@ -5,9 +5,11 @@
             <div class="card">
                 <div class="stat-widget-two card-body">
                     <div class="stat-content">
-                        <div class="stat-text"><b>Total controlé EQ 1</b> </div>
-                        <div class="stat-text"> Ebeng </div>
-                        <div class="stat-digit text-end text-primary"> <i class="fa fa-usd"></i>{{ $totEq_1 }}</div>
+                        <div class="stat-text"><b>Total controlé Equipe 1 :</b> </div>
+                        <div class="stat-text"> ---- </div>
+                        <div class="stat-digit text-end text-primary"> <i class="fa fa-usd"></i>{{ $totEq_1 }} ||
+                            <b class="text-danger">-----</b>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -16,26 +18,11 @@
             <div class="card">
                 <div class="stat-widget-two card-body">
                     <div class="stat-content">
-                        <div class="stat-text">Income Detail</div>
-                        <div class="stat-digit"> <i class="fa fa-usd"></i>7800</div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-primary w-75" role="progressbar" aria-valuenow="78"
-                            aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="stat-widget-two card-body">
-                    <div class="stat-content">
-                        <div class="stat-text">Task Completed</div>
-                        <div class="stat-digit"> <i class="fa fa-usd"></i> 500</div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-warning w-50" role="progressbar" aria-valuenow="50"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="stat-text"><b>Total controlé Equipe 2 :</b> </div>
+                        <div class="stat-text"> ---- </div>
+                        <div class="stat-digit text-end text-primary"> <i class="fa fa-usd"></i>{{ $totEq_2 }} ||
+                            <b class="text-danger">-----</b>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,27 +31,11 @@
             <div class="card">
                 <div class="stat-widget-two card-body">
                     <div class="stat-content">
-                        <div class="stat-text">Task Completed</div>
-                        <div class="stat-digit"> <i class="fa fa-usd"></i>650</div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-danger w-65" role="progressbar" aria-valuenow="65"
-                            aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- /# card -->
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="stat-widget-two card-body">
-                    <div class="stat-content">
-                        <div class="stat-text">Today Expenses </div>
-                        <div class="stat-digit"> <i class="fa fa-usd"></i>8500</div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-success w-85" role="progressbar" aria-valuenow="85"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="stat-text"><b>Total controlé Equipe 3 :</b> </div>
+                        <div class="stat-text"> ---- </div>
+                        <div class="stat-digit text-end text-primary"> <i class="fa fa-usd"></i>{{ $totEq_3 }} ||
+                            <b class="text-danger">-----</b>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -73,26 +44,11 @@
             <div class="card">
                 <div class="stat-widget-two card-body">
                     <div class="stat-content">
-                        <div class="stat-text">Income Detail</div>
-                        <div class="stat-digit"> <i class="fa fa-usd"></i>7800</div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-primary w-75" role="progressbar" aria-valuenow="78"
-                            aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="stat-widget-two card-body">
-                    <div class="stat-content">
-                        <div class="stat-text">Task Completed</div>
-                        <div class="stat-digit"> <i class="fa fa-usd"></i> 500</div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-warning w-50" role="progressbar" aria-valuenow="50"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="stat-text"><b>Total controlé Equipe 4 :</b> </div>
+                        <div class="stat-text"> ---- </div>
+                        <div class="stat-digit text-end text-primary"> <i class="fa fa-usd"></i>{{ $totEq_4 }} ||
+                            <b class="text-danger">-----</b>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -101,27 +57,11 @@
             <div class="card">
                 <div class="stat-widget-two card-body">
                     <div class="stat-content">
-                        <div class="stat-text">Task Completed</div>
-                        <div class="stat-digit"> <i class="fa fa-usd"></i>650</div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-danger w-65" role="progressbar" aria-valuenow="65"
-                            aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- /# card -->
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="stat-widget-two card-body">
-                    <div class="stat-content">
-                        <div class="stat-text">Today Expenses </div>
-                        <div class="stat-digit"> <i class="fa fa-usd"></i>8500</div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-success w-85" role="progressbar" aria-valuenow="85"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="stat-text"><b>Total controlé Equipe 5 :</b> </div>
+                        <div class="stat-text"> ---- </div>
+                        <div class="stat-digit text-end text-primary"> <i class="fa fa-usd"></i>{{ $totEq_5 }} ||
+                            <b class="text-danger">-----</b>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -130,26 +70,11 @@
             <div class="card">
                 <div class="stat-widget-two card-body">
                     <div class="stat-content">
-                        <div class="stat-text">Income Detail</div>
-                        <div class="stat-digit"> <i class="fa fa-usd"></i>7800</div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-primary w-75" role="progressbar" aria-valuenow="78"
-                            aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="stat-widget-two card-body">
-                    <div class="stat-content">
-                        <div class="stat-text">Task Completed</div>
-                        <div class="stat-digit"> <i class="fa fa-usd"></i> 500</div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-warning w-50" role="progressbar" aria-valuenow="50"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="stat-text"><b>Total controlé Equipe 6 :</b> </div>
+                        <div class="stat-text"> ---- </div>
+                        <div class="stat-digit text-end text-primary"> <i class="fa fa-usd"></i>{{ $totEq_6 }} ||
+                            <b class="text-danger">-----</b>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -158,27 +83,11 @@
             <div class="card">
                 <div class="stat-widget-two card-body">
                     <div class="stat-content">
-                        <div class="stat-text">Task Completed</div>
-                        <div class="stat-digit"> <i class="fa fa-usd"></i>650</div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-danger w-65" role="progressbar" aria-valuenow="65"
-                            aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- /# card -->
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="stat-widget-two card-body">
-                    <div class="stat-content">
-                        <div class="stat-text">Today Expenses </div>
-                        <div class="stat-digit"> <i class="fa fa-usd"></i>8500</div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-success w-85" role="progressbar" aria-valuenow="85"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="stat-text"><b>Total controlé Equipe 7 :</b> </div>
+                        <div class="stat-text"> ---- </div>
+                        <div class="stat-digit text-end text-primary"> <i class="fa fa-usd"></i>{{ $totEq_7 }} ||
+                            <b class="text-danger">-----</b>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -187,26 +96,11 @@
             <div class="card">
                 <div class="stat-widget-two card-body">
                     <div class="stat-content">
-                        <div class="stat-text">Income Detail</div>
-                        <div class="stat-digit"> <i class="fa fa-usd"></i>7800</div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-primary w-75" role="progressbar" aria-valuenow="78"
-                            aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="stat-widget-two card-body">
-                    <div class="stat-content">
-                        <div class="stat-text">Task Completed</div>
-                        <div class="stat-digit"> <i class="fa fa-usd"></i> 500</div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-warning w-50" role="progressbar" aria-valuenow="50"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="stat-text"><b>Total controlé Equipe 8 :</b> </div>
+                        <div class="stat-text"> ---- </div>
+                        <div class="stat-digit text-end text-primary"> <i class="fa fa-usd"></i>{{ $totEq_8 }} ||
+                            <b class="text-danger">-----</b>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -215,16 +109,14 @@
             <div class="card">
                 <div class="stat-widget-two card-body">
                     <div class="stat-content">
-                        <div class="stat-text">Task Completed</div>
-                        <div class="stat-digit"> <i class="fa fa-usd"></i>650</div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-danger w-65" role="progressbar" aria-valuenow="65"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="stat-text"><b>Total controlé Equipe 9 :</b> </div>
+                        <div class="stat-text"> ---- </div>
+                        <div class="stat-digit text-end text-primary"> <i class="fa fa-usd"></i>{{ $totEq_9 }} ||
+                            <b class="text-danger">-----</b>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- /# card -->
         </div>
         <!-- /# column -->
     </div>
